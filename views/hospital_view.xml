@@ -1,0 +1,95 @@
+<odoo>
+  <!-- Form view -->
+    <record id="hospital_form_view" model="ir.ui.view">
+        <field name="name">hospital.form.view</field>
+        <field name="model">hospital</field>
+        <field name="arch" type="xml">
+            <form string="Form Hospital">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="hospital_adreca_id"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="hospital_metge_id"/>
+                    </group>
+                    <group>
+                        <field name="hospital_persona_id"/>
+                    </group>
+                    <group>
+                        <field name="hospital_malaltia_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+
+    <!-- Hospital -->
+    <record id="hospital_tree_view" model="ir.ui.view">
+        <field name="name">hospital.tree.view</field>
+        <field name="model">hospital</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Metge -->
+    <record id="hospital_metge_tree_view" model="ir.ui.view">
+        <field name="name">hospital.metge.tree.view</field>
+        <field name="model">hospital_metge</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="nom"/>
+                <field name="nif"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Persona(Pacient) -->
+    <record id="hospital_persona_tree_view" model="ir.ui.view">
+        <field name="name">hospital.persona.tree.view</field>
+        <field name="model">hospital_persona</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="nom"/>
+                <field name="nif"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Malaltia -->
+    <record id="hospital_malaltia_tree_view" model="ir.ui.view">
+        <field name="name">hospital.malaltia.tree.view</field>
+        <field name="model">hospital_malaltia</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="nom"/>
+                <field name="codi"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+
+    <!-- Hospital -->
+    <record id="action_hospital" model="ir.actions.act_window">
+        <field name="name">action.hospital</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="hospital_menu_root" name="Gestió Hospitals" sequence="1"/>
+
+    <!-- Hospital -->
+    <menuitem id="hospital_menu_category" name="Hospitals" sequence="1" parent="hospital_menu_root"/>
+    <menuitem id="action_hospital_menu" name="Hospital" sequence="1" parent="hospital_menu_category" action="action_hospital"/>
+
+</odoo>
